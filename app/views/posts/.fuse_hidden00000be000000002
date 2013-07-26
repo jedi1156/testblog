@@ -6,17 +6,16 @@
   = link_to "edit", edit_post_path(post), class: 'post__button--edit'
 
   .post__body
-    = post.multiline_body.html_safe
+    = post.body
   .post__tags-list.tagsinput
     - post.tags_array.each do |tag|
       = content_tag :span, tag, class: 'tag'
 
   .post__comments
-    %header
-      %h2 Comments
     - comments.each do |comment|
       .post__comment
-        %h3= comment.user_name
-        %p:= comment.multiline_body.html_safe
+        = debug comment.user
+        # %h3= comment.user
+        %p= comment.body
 
 

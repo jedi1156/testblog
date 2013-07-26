@@ -15,10 +15,12 @@
 }
 
 .post__button--edit {
-  font-size: 12px; }
+  font-size: 12px;
+}
 
 .post--short-size {
-  border-bottom: 1px solid #f2f2f2; }
+  border-bottom: 1px solid #f2f2f2;
+}
 
 .post--short-size {
   margin-bottom: 10px;
@@ -28,5 +30,28 @@
 .post--full-size {
   .post__body {
     margin: 15px 0;
+  }
+}
+
+.post__comments {
+  clear: both;
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .post__comment {
+    border: 1px dotted grey;
+    border-radius: 7px;
+    padding: 4px 10px;
+    margin: 2px;
+
+    h3 {
+      font-size: 1.2em;
+    }
+
+    p {
+      margin: 0.5em 1em;
+    }
   }
 }

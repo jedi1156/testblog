@@ -11,6 +11,7 @@ class Post
 
   belongs_to :user
   has_many :comments
+  accepts_nested_attributes_for :comments
 
   default_scope ne(archived: true)
 

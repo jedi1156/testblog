@@ -33,8 +33,8 @@ class User
   field :name, type: String
   field :nickname, type: String
 
-  has_many :posts
-  has_many :comments
+  embeds_many :posts
+  embeds_many :comments
 
   def owner? post
     posts.include? post
