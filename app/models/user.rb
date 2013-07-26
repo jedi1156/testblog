@@ -35,6 +35,7 @@ class User
 
   has_many :posts
   has_many :comments
+  has_many :votes
 
   def owner? post
     posts.include? post

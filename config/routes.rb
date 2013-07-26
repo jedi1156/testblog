@@ -9,6 +9,9 @@ Easyblog::Application.routes.draw do
     member do
       post :mark_archived
     end
-    resources :comments, as: "comments"
+    resources :comments
   end
+  
+  post 'posts/:post_id/comments/:comment_id/like', to: "comments#like"
+  post 'posts/:post_id/comments/:comment_id/dislike', to: "comments#dislike"
 end

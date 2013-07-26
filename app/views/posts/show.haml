@@ -2,7 +2,7 @@
   %h2
     = post.title
     %small
-      = post.created_at
+      = post.creation_time
   = link_to "edit", edit_post_path(post), class: 'post__button--edit'
 
   .post__body
@@ -18,7 +18,9 @@
         = link_to "add new", new_post_comment_path(post), class: "comment_button--add pull-right"
     - comments.each do |comment|
       .post__comment
-        %h3= comment.user.to_s
-        %p:= comment.multiline_body.html_safe
-
-
+        %h3
+          = comment.user.to_s
+          %span.comment__votes= "Votes #{comment.votes_val}"
+          = link_to "Like", post_comment_path(post, comment) + "/like", class: "vote_button--like pull-right"
+          = link_to "Dislike", post_comment_path(post, comment) + "/dislike", class: "vote_button--dislike pull-right"
+        %p= comment.multiline_body.html_safe

@@ -14,4 +14,8 @@ class PostDecorator < Draper::Decorator
 	def truncated_body
 		h.raw h.truncate(multiline_body, length: 200, omission: "...")
 	end
+
+	def creation_time
+		created_at.strftime("%d/%m/%Y : %I:%M")
+	end
 end
