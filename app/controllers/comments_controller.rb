@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
-	expose(:post)
-	expose(:comment)
-	expose(:comments) { post.comments }
+	expose_decorated(:post)
+	expose_decorated(:comment)
+	expose_decorated(:comments) { post.comments }
 
 	def create
 		comment.user_id = current_user.id

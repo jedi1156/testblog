@@ -1,4 +1,4 @@
 - comments.each do |comment|
 	.post__comment
 		%h3= comment.user.name
-		%p= comment.multiline_body
+		%p= comment.multiline_body.html_safe

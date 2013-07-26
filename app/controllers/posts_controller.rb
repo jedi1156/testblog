@@ -2,12 +2,7 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!
   expose_decorated(:posts)
   expose_decorated(:post)
-  expose_decorated(:comments) do
-    post.comments.each do |comment|
-      comment[:user_name] = User.find(comment.user_id).to_s
-    end
-    post.comments
-  end
+  expose_decorated(:comments) { post.comments }
 
   def index
   end
@@ -44,6 +39,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    post.user_id = current_user.id
     if post.save
       redirect_to action: :index
     else

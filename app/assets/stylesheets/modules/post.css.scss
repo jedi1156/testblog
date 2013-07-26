@@ -8,7 +8,7 @@
   }
 }
 
-.post__button--add, .post__button--edit {
+.post__button--add, .post__button--edit, .comment_button--add {
   @extend .btn;
   @extend .btn-primary;
   @extend .btn-small;
@@ -35,12 +35,14 @@
 
 .post__comments {
   clear: both;
+  margin: 100px auto auto auto;
 
   h2 {
     font-size: 1.5em;
   }
 
   .post__comment {
+    clear: both;
     border: 1px dotted grey;
     border-radius: 7px;
     padding: 4px 10px;

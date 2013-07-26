@@ -13,12 +13,11 @@
 
   .post__comments
     %header
-      %h2
-        Comments
-        = link_to "add new", new_post_comment_path(post), class: "comment_button--add pull-right"
+      %h2 Comments
+      = link_to "add new", new_post_comment_path(post), class: "comment_button--add pull-right"
     - comments.each do |comment|
       .post__comment
-        %h3= comment.user.to_s
+        %h3= comment.user_name
         %p:= comment.multiline_body.html_safe
 
 
