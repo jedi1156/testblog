@@ -50,6 +50,10 @@
     font-size: 1.5em;
   }
 
+  .post__comment--insulting {
+    @extend .btn-danger;
+  }
+
   .post__comment {
     clear: both;
     border: 1px dotted grey;
@@ -68,10 +72,10 @@
 
   }
 
-  .comment_button--add, .comment__button--edit, .comment__button--delete {
+  .comment__button--add, .comment__button--edit, .comment__button--delete, .comment__button--uninsult, .vote__button--like, .vote__button--dislike {
     @extend .std__button;
   }
-  .comment__button--delete {
+  .comment__button--delete, .vote__button--dislike {
     @extend .btn-danger;
   }
 }

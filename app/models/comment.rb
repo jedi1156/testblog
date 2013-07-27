@@ -12,7 +12,8 @@ class Comment
 	has_many :votes
 
 	def votes_val
-		@val ||= votes.inject(0) do |res, it|
+		votes = Vote.where(comment: self)
+		votes.inject(0) do |res, it|
 			res += it.val
 		end
 	end
@@ -20,6 +21,15 @@ class Comment
 	def user_vote(user_id)
 		@vote ||= votes.detect do |v|
 			v.user_id == user_id
+		end
+	end
+
+	def dislikes
+		@dislikes ||= votes.inject(0) do |res, it|
+			if it.val < 0
+				res += 1
+			end
+			res
 		end
 	end
 end

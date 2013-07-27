@@ -17,8 +17,6 @@
     %header
       %h2
         Comments
-        %small
-          = link_to "see all", post_comments_path(post)
         = link_to "new comment", new_post_comment_path(post), class: "comment__button--add pull-right"
     - comments.each do |comment|
       - if (current_user.owner? post) || !comment.insulting
@@ -32,5 +30,5 @@
             = link_to "delete", post_comment_path(post, comment), method: :delete, class: "comment__button--delete pull-right"
             = link_to "edit", edit_post_comment_path(post, comment), class: "comment__button--edit pull-right"
           - if (current_user.owner? post) && comment.insulting
-            = link_to "Heey, that's not insulting", post_comment_path(post, comment) + "/uninsult", method: :post, class: "comment__button--uninsult"
+            = link_to "Heey, that's not insulting", post_comment_path(post, comment) + "/uninsult", method: :patch, class: "comment__button--uninsult"
           %p= comment.multiline_body.html_safe

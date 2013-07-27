@@ -2,9 +2,8 @@ class CommentsController < ApplicationController
 	before_filter :authenticate_user!
 
 	expose_decorated(:post)
-	expose_decorated(:comments) { post.comments }
 	expose_decorated(:comment)
-	expose(:votes) { comment.votes }
+	expose_decorated(:comments) { post.comments }
 	expose(:vote) { comment.user_vote(current_user.id) || Vote.new(comment_id: comment.id, user_id: current_user.id) }
 
 	def create
@@ -43,13 +42,36 @@ class CommentsController < ApplicationController
 		handle_vote
 	end
 
-private
-	def handle_vote
-		if vote.save
+	def uninsult
+		if current_user.owner? post
+			comment.insulting = false
+			comment.save
 			render json: {
 				status: :ok,
 				message: "updated",
-				val: comment.votes_val
+				insulting: comment.insulting
+			}
+		else
+			render json: {
+				status: :forbidden,
+				message: "rejected",
+				insulting: comment.insulting
+			}
+		end
+	end
+
+private
+	def handle_vote
+		if vote.save
+			if !comment.insulting && comment.dislikes >= 3
+				comment.insulting = true
+				comment.save
+			end
+			render json: {
+				status: :ok,
+				message: "updated",
+				val: comment.votes_val,
+				insulting: comment.insulting
 			}
 		else
 			render json: {

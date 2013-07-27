@@ -26,16 +26,16 @@ class PostsController < ApplicationController
         render :new
       end
     else
-      render action: :index, flash { error: "Not yours to touch" }
+      render action: :index, flash: { error: "Not yours to touch" }
     end
   end
 
   def destroy
     if current_user.owner? post
       post.destroy 
-      render action: :index, flash { notice: "Got rid of that pesky thing, sire" }
+      render action: :index, flash: { notice: "Got rid of that pesky thing, sire" }
     else
-      render action: :index, flash { error: "Not yours to touch" }
+      render action: :index, flash: { error: "Not yours to touch" }
     end
   end
 

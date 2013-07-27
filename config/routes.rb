@@ -14,4 +14,5 @@ Easyblog::Application.routes.draw do
   
   post 'posts/:post_id/comments/:comment_id/like', to: "comments#like"
   post 'posts/:post_id/comments/:comment_id/dislike', to: "comments#dislike"
+  post 'posts/:post_id/comments/:comment_id/uninsult', to: "comments#uninsult"
 end
