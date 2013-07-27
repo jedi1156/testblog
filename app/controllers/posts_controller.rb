@@ -19,16 +19,24 @@ class PostsController < ApplicationController
   end
 
   def update
-    if post.save
-      render action: :index
+    if current_user.owner? post
+      if post.save
+        render action: :index
+      else
+        render :new
+      end
     else
-      render :new
+      render action: :index, flash { error: "Not yours to touch" }
     end
   end
 
   def destroy
-    post.destroy if current_user.owner? post
-    render action: :index
+    if current_user.owner? post
+      post.destroy 
+      render action: :index, flash { notice: "Got rid of that pesky thing, sire" }
+    else
+      render action: :index, flash { error: "Not yours to touch" }
+    end
   end
 
   def show

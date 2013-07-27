@@ -3,7 +3,9 @@
     = post.title
     %small
       = post.creation_time
-  = link_to "edit", edit_post_path(post), class: 'post__button--edit'
+  - if post.user == current_user
+    = link_to "edit", edit_post_path(post), class: 'post__button--edit'
+    = link_to "delete", post_path(post), method: :delete, class: 'post__button--delete'
 
   .post__body
     = post.multiline_body.html_safe
@@ -15,12 +17,15 @@
     %header
       %h2
         Comments
-        = link_to "add new", new_post_comment_path(post), class: "comment_button--add pull-right"
+        = link_to "new comment", new_post_comment_path(post), class: "comment_button--add pull-right"
     - comments.each do |comment|
       .post__comment
         %h3
           = comment.user.to_s
-          %span.comment__votes= "Votes #{comment.votes_val}"
-          = link_to "Like", post_comment_path(post, comment) + "/like", class: "vote_button--like pull-right"
-          = link_to "Dislike", post_comment_path(post, comment) + "/dislike", class: "vote_button--dislike pull-right"
+          %span.comment__votes.pull-right= "Votes #{comment.votes_val}"
+          = link_to "Like", post_comment_path(post, comment) + "/like", method: :post, class: "vote__button--like pull-right"
+          = link_to "Dislike", post_comment_path(post, comment) + "/dislike", method: :post, class: "vote__button--dislike pull-right"
+        - if comment.user == current_user
+          = link_to "edit", edit_post_comment_path(post, comment), class: "comment__button--edit pull-right"
+          = link_to "delete", post_comment_path(post, comment), method: :delete, class: "comment__button--delete pull-right"
         %p= comment.multiline_body.html_safe

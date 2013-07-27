@@ -1,8 +1,0 @@
-class CommentsController < ApplicationController
-	expose(:post)
-	expose(:comments)
-
-	def index
-		
-	end
-end

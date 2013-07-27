@@ -8,11 +8,20 @@
   }
 }
 
-.post__button--add, .post__button--edit, .comment_button--add {
+.std__button {
   @extend .btn;
   @extend .btn-primary;
   @extend .btn-small;
 }
+
+.post__button--add, .post__button--edit, .post__button--delete {
+  @extend .std__button;
+}
+
+.post__button--delete {
+  @extend .btn-danger;
+}
+
 
 .post__button--edit {
   font-size: 12px;
@@ -54,6 +63,15 @@
 
     p {
       margin: 0.5em 1em;
+      width: 80%;
     }
+
+  }
+
+  .comment_button--add, .comment__button--edit, .comment__button--delete {
+    @extend .std__button;
+  }
+  .comment__button--delete {
+    @extend .btn-danger;
   }
 }
