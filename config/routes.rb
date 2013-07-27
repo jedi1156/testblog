@@ -12,7 +12,7 @@ Easyblog::Application.routes.draw do
     resources :comments
   end
   
-  post 'posts/:post_id/comments/:comment_id/like', to: "comments#like"
-  post 'posts/:post_id/comments/:comment_id/dislike', to: "comments#dislike"
-  post 'posts/:post_id/comments/:comment_id/uninsult', to: "comments#uninsult"
+  post 'posts/:post_id/comments/:comment_id/like', to: "comments#like", as: "post_comment_like"
+  post 'posts/:post_id/comments/:comment_id/dislike', to: "comments#dislike", as: "post_comment_dislike"
+  post 'posts/:post_id/comments/:comment_id/uninsult', to: "comments#uninsult", as: "post_comment_uninsult"
 end

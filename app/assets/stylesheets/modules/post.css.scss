@@ -19,6 +19,10 @@
   @extend .std__button;
 }
 
+.post__button--add {
+  @extend .pull-right
+}
+
 .post__button--delete {
   @extend .btn-danger;
 }

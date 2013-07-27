@@ -13,23 +13,17 @@ class Comment
 
 	def votes_val
 		votes = Vote.where(comment: self)
-		votes.inject(0) do |res, it|
-			res += it.val
-		end
+		votes.inject(0) { |res, it| res += it.val }
 	end
 
 	def user_vote(user_id)
-		@vote ||= votes.detect do |v|
-			v.user_id == user_id
-		end
+		@vote ||= votes.detect { |v| v.user_id == user_id }
 	end
 
 	def dislikes
-		@dislikes ||= votes.inject(0) do |res, it|
-			if it.val < 0
-				res += 1
-			end
+		@dislikes ||= votes.inject(0) { |res, it|
+			res += 1 if it.val < 0 
 			res
-		end
+		}
 	end
 end
