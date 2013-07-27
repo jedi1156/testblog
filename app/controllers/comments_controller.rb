@@ -46,17 +46,9 @@ class CommentsController < ApplicationController
 		if current_user.owner? post
 			comment.insulting = false
 			comment.save
-			render json: {
-				status: :ok,
-				message: "updated",
-				insulting: comment.insulting
-			}
+			render json: { status: :ok, message: "updated", insulting: comment.insulting }
 		else
-			render json: {
-				status: :forbidden,
-				message: "rejected",
-				insulting: comment.insulting
-			}
+			render json: { status: :forbidden, message: "rejected", insulting: comment.insulting }
 		end
 	end
 
@@ -67,18 +59,9 @@ private
 				comment.insulting = true
 				comment.save
 			end
-			render json: {
-				status: :ok,
-				message: "updated",
-				val: comment.votes_val,
-				insulting: comment.insulting
-			}
+			render json: { status: :ok, message: "updated", val: comment.votes_val, insulting: comment.insulting }
 		else
-			render json: {
-				status: :conflict,
-				message: "rejected",
-				val: comment.votes_val
-			}
+			render json: { status: :conflict, message: "rejected", val: comment.votes_val }
 		end
 	end
 end
