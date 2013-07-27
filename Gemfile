@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails'
 gem 'jquery-rails'
-gem "mongoid"
+gem "pg"
 gem "haml-rails"
 gem "bootstrap-sass"
 gem "devise"
