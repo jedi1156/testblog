@@ -1,4 +1,2 @@
-- comments.each do |comment|
-	.post__comment
-		%h3= comment.user.name
-		%p= comment.multiline_body.html_safe
+= link_to "back to post", post, { class: "std__button" }
+= render "comments/comments", comments: comments

@@ -1,1 +1,4 @@
-.post__comment= comment.multiline_body.html_safe
+.post__comments
+	%ul
+		= render "comment", dont_see_comment: true, post: post, comment: comment
+= link_to "back to comments", post_comments_path(post), { class: "std__button" }

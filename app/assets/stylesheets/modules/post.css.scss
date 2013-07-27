@@ -4,8 +4,9 @@
   height: auto;
   .tag, .tag:hover {
     padding: 6px 13px;
-    font-size: 12px
+    font-size: 12px;
   }
+  margin: auto auto 50px auto;
 }
 
 .std__button {
@@ -42,40 +43,4 @@
   }
 }
 
-.post__comments {
-  clear: both;
-  margin: 100px auto auto auto;
 
-  h2 {
-    font-size: 1.5em;
-  }
-
-  .post__comment--insulting {
-    @extend .btn-danger;
-  }
-
-  .post__comment {
-    clear: both;
-    border: 1px dotted grey;
-    border-radius: 7px;
-    padding: 4px 10px;
-    margin: 2px;
-
-    h3 {
-      font-size: 1.2em;
-    }
-
-    p {
-      margin: 0.5em 1em;
-      width: 80%;
-    }
-
-  }
-
-  .comment__button--add, .comment__button--edit, .comment__button--delete, .comment__button--uninsult, .vote__button--like, .vote__button--dislike {
-    @extend .std__button;
-  }
-  .comment__button--delete, .vote__button--dislike {
-    @extend .btn-danger;
-  }
-}
