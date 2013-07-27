@@ -7,6 +7,10 @@
     = link_to "edit", edit_post_path(post), class: 'post__button--edit'
     = link_to "delete", post_path(post), method: :delete, class: 'post__button--delete'
 
+  .post__author
+    %small
+      author: 
+      = post.user.to_s
   .post__body
     = post.multiline_body.html_safe
   .post__tags-list.tagsinput

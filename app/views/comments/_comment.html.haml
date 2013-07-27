@@ -3,10 +3,11 @@
     %h3
       = comment.user.to_s
       - unless defined? dont_see_comment
-        = link_to "see comment", post_comment_path(post, comment)
+        %small
+          = link_to "see comment", post_comment_path(post, comment)
       %span.comment__votes.pull-right= "Votes #{comment.votes_val}"
-      = link_to "Dislike", post_comment_path(post, comment) + "/dislike", method: :post, class: "vote__button--dislike pull-right"
-      = link_to "Like", post_comment_path(post, comment) + "/like", method: :post, class: "vote__button--like pull-right"
+      = link_to "dislike", post_comment_path(post, comment) + "/dislike", method: :post, class: "vote__button--dislike pull-right"
+      = link_to "like", post_comment_path(post, comment) + "/like", method: :post, class: "vote__button--like pull-right"
     - if comment.user == current_user
       = link_to "delete", post_comment_path(post, comment), method: :delete, class: "comment__button--delete pull-right"
       = link_to "edit", edit_post_comment_path(post, comment), class: "comment__button--edit pull-right"
